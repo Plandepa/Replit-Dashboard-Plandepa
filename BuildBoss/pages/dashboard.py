@@ -33,8 +33,11 @@ def show():
         st.metric("Calls This Week", recent_calls, delta=None)
     
     with col4:
-        total_revenue = sum([f['total_amount'] for f in financial_data if f['record_type'] == 'income'])
-        st.metric("Total Revenue", f"${total_revenue:,.2f}" if total_revenue else "$0.00", delta=None)
+        total_revenue = 0
+        for f in financial_data:
+            if f['record_type'] == 'income':
+                total_revenue += float(f['total_amount'] or 0)
+        st.metric("Total Revenue", f"${total_revenue:,.2f}", delta=None)
     
     st.markdown("---")
     
@@ -115,9 +118,12 @@ def show():
                     with col2:
                         st.write(job['client_name'])
                     with col3:
-                        if job['start_date']:
-                            st.write(job['start_date'].strftime('%m/%d/%Y'))
-                        else:
+                        try:
+                            if job.get('start_date'):
+                                st.write(job['start_date'].strftime('%m/%d/%Y'))
+                            else:
+                                st.write("Not scheduled")
+                        except (AttributeError, ValueError):
                             st.write("Not scheduled")
                     with col4:
                         status_color = {
@@ -163,20 +169,20 @@ def show():
     
     with col1:
         if st.button("➕ New Estimate", use_container_width=True, key="new_estimate_btn"):
-            st.session_state.page_nav = "📋 Estimates"
+            st.session_state.current_page = "📋 Estimates"
             st.rerun()
-    
+
     with col2:
         if st.button("🔨 Create Job", use_container_width=True, key="new_job_btn"):
-            st.session_state.page_nav = "🔨 Jobs"
+            st.session_state.current_page = "🔨 Jobs"
             st.rerun()
-    
+
     with col3:
         if st.button("📞 AI Call Log", use_container_width=True, key="ai_call_btn"):
-            st.session_state.page_nav = "🤖 AI Caller"
+            st.session_state.current_page = "🤖 AI Caller"
             st.rerun()
-    
+
     with col4:
         if st.button("💰 Add Transaction", use_container_width=True, key="transaction_btn"):
-            st.session_state.page_nav = "💰 Financials"
+            st.session_state.current_page = "💰 Financials"
             st.rerun()
