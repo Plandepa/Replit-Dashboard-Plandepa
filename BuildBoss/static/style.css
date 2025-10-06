@@ -1,0 +1,813 @@
+/* PLANDEPA Dashboard - BUILD SMART, GROW SIMPLE */
+
+/* Import fonts */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+/* Root variables for vibrant PLANDEPA theming */
+:root {
+    --primary-color: #D84849;
+    --secondary-color: #FF6B6B;
+    --accent-color: #4ECDC4;
+    --success-color: #2ECC71;
+    --warning-color: #F39C12;
+    --danger-color: #E74C3C;
+    --background-primary: #0a0e1a;
+    --background-secondary: #1a1f2e;
+    --background-card: #252b3a;
+    --text-primary: #fafafa;
+    --text-secondary: #b3b3b3;
+    --border-color: #3a4050;
+    --shadow-light: 0 2px 10px rgba(216, 72, 73, 0.15);
+    --shadow-medium: 0 4px 20px rgba(216, 72, 73, 0.25);
+    --shadow-heavy: 0 8px 30px rgba(216, 72, 73, 0.35);
+    --gradient-primary: linear-gradient(135deg, #D84849 0%, #FF6B6B 100%);
+    --gradient-accent: linear-gradient(135deg, #4ECDC4 0%, #44A08D 100%);
+    --gradient-vibrant: linear-gradient(135deg, #D84849 0%, #4ECDC4 50%, #FF6B6B 100%);
+}
+
+/* Animated background */
+body {
+    background: var(--background-primary);
+    font-family: 'Inter', sans-serif;
+    overflow-x: hidden;
+}
+
+/* Enhanced animated background patterns */
+.stApp::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: 
+        radial-gradient(circle at 25% 25%, rgba(216, 72, 73, 0.12) 0%, transparent 50%),
+        radial-gradient(circle at 75% 75%, rgba(78, 205, 196, 0.12) 0%, transparent 50%),
+        radial-gradient(circle at 50% 50%, rgba(255, 107, 107, 0.08) 0%, transparent 50%);
+    animation: backgroundShift 25s ease-in-out infinite alternate;
+    pointer-events: none;
+    z-index: -1;
+}
+
+@keyframes backgroundShift {
+    0% {
+        transform: translateX(0) translateY(0) rotate(0deg);
+        filter: hue-rotate(0deg);
+    }
+    33% {
+        transform: translateX(-15px) translateY(-10px) rotate(1deg);
+        filter: hue-rotate(15deg);
+    }
+    66% {
+        transform: translateX(10px) translateY(-15px) rotate(-1deg);
+        filter: hue-rotate(-10deg);
+    }
+    100% {
+        transform: translateX(-5px) translateY(-5px) rotate(0.5deg);
+        filter: hue-rotate(5deg);
+    }
+}
+
+/* Floating animation for decorative elements */
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0px) rotate(0deg);
+    }
+    50% {
+        transform: translateY(-12px) rotate(2deg);
+    }
+}
+
+/* PLANDEPA Logo styling */
+.plandepa-logo {
+    width: 120px;
+    height: auto;
+    margin-bottom: 1rem;
+    filter: drop-shadow(0 4px 8px rgba(216, 72, 73, 0.3));
+    animation: float 8s ease-in-out infinite;
+}
+
+.plandepa-logo-large {
+    width: 200px;
+    height: auto;
+    margin-bottom: 1.5rem;
+    filter: drop-shadow(0 6px 12px rgba(216, 72, 73, 0.4));
+    animation: float 10s ease-in-out infinite;
+}
+
+/* Sidebar styling with vibrant PLANDEPA colors */
+.css-1d391kg {
+    background: var(--gradient-primary) !important;
+    border-right: 3px solid var(--accent-color);
+    box-shadow: var(--shadow-medium);
+}
+
+.sidebar-header-new {
+    background: linear-gradient(135deg, #1e293b 0%, #334155 50%, #475569 100%);
+    padding: 2rem 1.5rem;
+    margin: -1rem -1rem 1.5rem -1rem;
+    border-radius: 0 0 20px 20px;
+    text-align: center;
+    box-shadow: 0 8px 25px rgba(30, 41, 59, 0.4);
+    position: relative;
+    overflow: hidden;
+}
+
+.sidebar-header-new::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, #D84849, #4ECDC4, #D84849);
+    animation: shimmer 3s ease-in-out infinite;
+}
+
+@keyframes shimmer {
+    0%, 100% { opacity: 0.8; }
+    50% { opacity: 1; }
+}
+
+.plandepa-title {
+    color: #ffffff !important;
+    font-size: 2.2rem !important;
+    font-weight: 800 !important;
+    margin: 0 0 0.3rem 0 !important;
+    text-shadow: 2px 2px 8px rgba(0,0,0,0.5);
+    letter-spacing: 2px;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif !important;
+    background: linear-gradient(45deg, #ffffff, #f8fafc, #ffffff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.plandepa-tagline {
+    color: #94a3b8 !important;
+    font-size: 0.75rem !important;
+    font-weight: 600 !important;
+    letter-spacing: 2px !important;
+    margin: 0 !important;
+    text-transform: uppercase;
+    opacity: 0.9;
+}
+
+/* Keep original sidebar header for backwards compatibility */
+.sidebar-header {
+    text-align: center;
+    padding: 2rem 1rem;
+    background: rgba(0, 0, 0, 0.3);
+    margin: -1rem -1rem 2rem -1rem;
+    border-radius: 0 0 1.5rem 1.5rem;
+    animation: float 6s ease-in-out infinite;
+    border-bottom: 2px solid var(--accent-color);
+}
+
+.sidebar-header h1 {
+    font-size: 2.2rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    background: linear-gradient(45deg, #fff, #4ECDC4, #fff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-shadow: 0 0 15px rgba(78, 205, 196, 0.4);
+    animation: textShimmer 3s ease-in-out infinite;
+}
+
+@keyframes textShimmer {
+    0%, 100% {
+        filter: brightness(1);
+    }
+    50% {
+        filter: brightness(1.2);
+    }
+}
+
+.sidebar-header p {
+    font-size: 0.85rem;
+    opacity: 0.9;
+    margin: 0;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    color: var(--accent-color);
+}
+
+/* Enhanced Navigation styling */
+.stRadio > div {
+    gap: 0.75rem;
+}
+
+.stRadio > div > label {
+    background: rgba(255, 255, 255, 0.1) !important;
+    border: 2px solid rgba(78, 205, 196, 0.3) !important;
+    border-radius: 1rem !important;
+    padding: 1rem 1.2rem !important;
+    margin: 0.3rem 0 !important;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    backdrop-filter: blur(15px);
+    position: relative;
+    overflow: hidden;
+}
+
+.stRadio > div > label::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(78, 205, 196, 0.3), transparent);
+    transition: left 0.6s ease;
+}
+
+.stRadio > div > label:hover::before {
+    left: 100%;
+}
+
+.stRadio > div > label:hover {
+    background: rgba(78, 205, 196, 0.2) !important;
+    border-color: var(--accent-color) !important;
+    transform: translateX(8px) scale(1.02);
+    box-shadow: 0 8px 25px rgba(78, 205, 196, 0.3);
+}
+
+.stRadio > div > label > div[data-testid="stMarkdownContainer"] {
+    font-weight: 600 !important;
+    color: #fff !important;
+}
+
+/* Vibrant main content area */
+.main .block-container {
+    background: rgba(37, 43, 58, 0.9);
+    backdrop-filter: blur(25px);
+    border-radius: 1.5rem;
+    box-shadow: var(--shadow-medium);
+    border: 2px solid rgba(78, 205, 196, 0.2);
+    margin-top: 1rem;
+    position: relative;
+    overflow: hidden;
+}
+
+.main .block-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: var(--gradient-vibrant);
+    animation: rainbowShift 4s ease-in-out infinite;
+}
+
+@keyframes rainbowShift {
+    0%, 100% {
+        background: var(--gradient-vibrant);
+    }
+    50% {
+        background: linear-gradient(135deg, #4ECDC4 0%, #D84849 50%, #FF6B6B 100%);
+    }
+}
+
+/* Enhanced header styling */
+h1 {
+    background: var(--gradient-vibrant);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    font-weight: 700;
+    position: relative;
+    margin-bottom: 2rem !important;
+    font-size: 2.5rem;
+}
+
+h1::after {
+    content: '';
+    position: absolute;
+    bottom: -0.75rem;
+    left: 0;
+    width: 80px;
+    height: 4px;
+    background: var(--gradient-accent);
+    border-radius: 3px;
+    animation: headerPulse 3s ease-in-out infinite;
+}
+
+@keyframes headerPulse {
+    0%, 100% {
+        opacity: 1;
+        width: 80px;
+        background: var(--gradient-accent);
+    }
+    50% {
+        opacity: 0.8;
+        width: 120px;
+        background: var(--gradient-primary);
+    }
+}
+
+/* Modern Navigation Button Styling for Sidebar */
+.css-1d391kg .stButton > button {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05)) !important;
+    backdrop-filter: blur(20px) !important;
+    border: 2px solid rgba(78, 205, 196, 0.3) !important;
+    border-radius: 12px !important;
+    padding: 0.8rem 1.2rem !important;
+    font-weight: 500 !important;
+    font-size: 0.95rem !important;
+    color: rgba(255, 255, 255, 0.9) !important;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    box-shadow: 0 4px 15px rgba(78, 205, 196, 0.1) !important;
+    position: relative !important;
+    overflow: hidden !important;
+    text-transform: none !important;
+    margin-bottom: 0.4rem !important;
+    text-align: left !important;
+}
+
+.css-1d391kg .stButton > button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(78, 205, 196, 0.4), transparent);
+    transition: left 0.6s ease;
+}
+
+.css-1d391kg .stButton > button:hover::before {
+    left: 100%;
+}
+
+.css-1d391kg .stButton > button:hover {
+    background: linear-gradient(135deg, rgba(78, 205, 196, 0.2), rgba(78, 205, 196, 0.1)) !important;
+    border-color: var(--accent-color) !important;
+    transform: translateX(6px) scale(1.02) !important;
+    box-shadow: 0 8px 25px rgba(78, 205, 196, 0.25) !important;
+    color: #ffffff !important;
+}
+
+/* Default button styling */
+.stButton > button {
+    background: var(--gradient-primary) !important;
+    color: white !important;
+    border: 2px solid transparent !important;
+    border-radius: 1rem !important;
+    padding: 1rem 2.5rem !important;
+    font-weight: 600 !important;
+    font-size: 1rem !important;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    box-shadow: var(--shadow-light) !important;
+    position: relative !important;
+    overflow: hidden !important;
+    text-transform: none !important;
+}
+
+.stButton > button::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    background: rgba(78, 205, 196, 0.3);
+    transition: all 0.4s ease;
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.stButton > button:hover::before {
+    width: 350px;
+    height: 350px;
+}
+
+.stButton > button:hover {
+    transform: translateY(-3px) scale(1.05) !important;
+    box-shadow: var(--shadow-heavy) !important;
+    background: var(--gradient-accent) !important;
+    border-color: var(--accent-color) !important;
+}
+
+.stButton > button:active {
+    transform: translateY(-1px) scale(1.02) !important;
+    box-shadow: var(--shadow-light) !important;
+}
+
+/* Enhanced form styling */
+.stTextInput > div > div > input,
+.stTextArea > div > div > textarea,
+.stSelectbox > div > div > select,
+.stNumberInput > div > div > input,
+.stDateInput > div > div > input,
+.stTimeInput > div > div > input {
+    background: var(--background-card) !important;
+    border: 2px solid var(--border-color) !important;
+    border-radius: 1rem !important;
+    color: var(--text-primary) !important;
+    transition: all 0.3s ease !important;
+    padding: 1rem !important;
+    font-weight: 500 !important;
+}
+
+.stTextInput > div > div > input:focus,
+.stTextArea > div > div > textarea:focus,
+.stSelectbox > div > div > select:focus,
+.stNumberInput > div > div > input:focus,
+.stDateInput > div > div > input:focus,
+.stTimeInput > div > div > input:focus {
+    border-color: var(--primary-color) !important;
+    box-shadow: 0 0 0 3px rgba(216, 72, 73, 0.2) !important;
+    outline: none !important;
+    background: rgba(216, 72, 73, 0.05) !important;
+}
+
+/* Vibrant metric cards */
+.css-1r6slb0 {
+    background: var(--gradient-primary) !important;
+    border-radius: 1.5rem !important;
+    padding: 2rem !important;
+    box-shadow: var(--shadow-medium) !important;
+    border: 2px solid rgba(78, 205, 196, 0.3) !important;
+    transition: all 0.4s ease !important;
+    position: relative !important;
+    overflow: hidden !important;
+}
+
+.css-1r6slb0::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: var(--gradient-accent);
+    animation: cardShimmer 4s ease-in-out infinite;
+}
+
+@keyframes cardShimmer {
+    0%, 100% {
+        opacity: 0.7;
+        transform: scaleX(0);
+        background: var(--gradient-accent);
+    }
+    50% {
+        opacity: 1;
+        transform: scaleX(1);
+        background: var(--gradient-vibrant);
+    }
+}
+
+.css-1r6slb0:hover {
+    transform: translateY(-8px) scale(1.02) !important;
+    box-shadow: var(--shadow-heavy) !important;
+    border-color: var(--accent-color) !important;
+}
+
+/* Enhanced tab styling */
+.stTabs [data-baseweb="tab-list"] {
+    gap: 1rem;
+    background: var(--background-secondary) !important;
+    border-radius: 1.5rem !important;
+    padding: 0.75rem !important;
+    box-shadow: inset var(--shadow-light) !important;
+    border: 2px solid rgba(78, 205, 196, 0.2) !important;
+}
+
+.stTabs [data-baseweb="tab"] {
+    background: transparent !important;
+    color: var(--text-secondary) !important;
+    border-radius: 1rem !important;
+    padding: 1rem 2rem !important;
+    font-weight: 600 !important;
+    transition: all 0.3s ease !important;
+    border: 2px solid transparent !important;
+}
+
+.stTabs [data-baseweb="tab"][aria-selected="true"] {
+    background: var(--gradient-primary) !important;
+    color: white !important;
+    box-shadow: var(--shadow-light) !important;
+    border-color: var(--accent-color) !important;
+}
+
+.stTabs [data-baseweb="tab"]:hover {
+    background: rgba(216, 72, 73, 0.2) !important;
+    color: var(--text-primary) !important;
+    border-color: rgba(216, 72, 73, 0.3) !important;
+}
+
+/* Vibrant container styling */
+.css-1kyxreq {
+    background: var(--background-card) !important;
+    border-radius: 1.5rem !important;
+    padding: 2rem !important;
+    border: 2px solid var(--border-color) !important;
+    box-shadow: var(--shadow-light) !important;
+    transition: all 0.3s ease !important;
+    margin-bottom: 1.5rem !important;
+    position: relative !important;
+}
+
+.css-1kyxreq::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    background: var(--gradient-vibrant);
+    border-radius: 1.5rem;
+    z-index: -1;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.css-1kyxreq:hover::before {
+    opacity: 0.1;
+}
+
+.css-1kyxreq:hover {
+    box-shadow: var(--shadow-medium) !important;
+    transform: translateY(-2px);
+}
+
+/* Enhanced expander styling */
+.streamlit-expanderHeader {
+    background: var(--gradient-primary) !important;
+    color: white !important;
+    border-radius: 1rem !important;
+    font-weight: 600 !important;
+    transition: all 0.3s ease !important;
+    border: 2px solid transparent !important;
+}
+
+.streamlit-expanderHeader:hover {
+    background: var(--gradient-accent) !important;
+    transform: translateX(8px) scale(1.02) !important;
+    border-color: var(--accent-color) !important;
+}
+
+.streamlit-expanderContent {
+    background: var(--background-card) !important;
+    border: 2px solid var(--border-color) !important;
+    border-radius: 0 0 1rem 1rem !important;
+    box-shadow: var(--shadow-light) !important;
+}
+
+/* Enhanced alert styling */
+.stAlert {
+    border-radius: 1rem !important;
+    border: 2px solid transparent !important;
+    box-shadow: var(--shadow-light) !important;
+    animation: slideIn 0.4s ease-out;
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(-15px) scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+/* Success alerts */
+.stSuccess {
+    background: linear-gradient(135deg, rgba(46, 204, 113, 0.2), rgba(39, 174, 96, 0.3)) !important;
+    border-color: var(--success-color) !important;
+}
+
+/* Error alerts */
+.stError {
+    background: linear-gradient(135deg, rgba(231, 76, 60, 0.2), rgba(192, 57, 43, 0.3)) !important;
+    border-color: var(--danger-color) !important;
+}
+
+/* Warning alerts */
+.stWarning {
+    background: linear-gradient(135deg, rgba(243, 156, 18, 0.2), rgba(230, 126, 34, 0.3)) !important;
+    border-color: var(--warning-color) !important;
+}
+
+/* Info alerts */
+.stInfo {
+    background: linear-gradient(135deg, rgba(216, 72, 73, 0.2), rgba(78, 205, 196, 0.2)) !important;
+    border-color: var(--primary-color) !important;
+}
+
+/* Modern login container styling */
+.login-container-new {
+    background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%);
+    padding: 2rem 0;
+    margin: -2rem -2rem 2rem -2rem;
+    position: relative;
+    overflow: hidden;
+}
+
+.login-container-new::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+        radial-gradient(circle at 20% 30%, rgba(216, 72, 73, 0.15) 0%, transparent 40%),
+        radial-gradient(circle at 80% 70%, rgba(78, 205, 196, 0.15) 0%, transparent 40%),
+        radial-gradient(circle at 40% 60%, rgba(255, 107, 107, 0.1) 0%, transparent 40%);
+    pointer-events: none;
+}
+
+.login-form-wrapper {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+}
+
+.login-title h2 {
+    color: #ffffff;
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+.login-title p {
+    color: #94a3b8;
+    font-size: 1rem;
+    margin: 0;
+    font-weight: 500;
+}
+
+.login-card {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 16px;
+    padding: 1.5rem;
+    margin: 1rem 0;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+.login-card h3 {
+    color: #ffffff;
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin: 0;
+    text-align: center;
+}
+
+.demo-info {
+    background: rgba(78, 205, 196, 0.1);
+    border: 1px solid rgba(78, 205, 196, 0.3);
+    border-radius: 8px;
+    padding: 0.75rem;
+    margin: 1rem 0;
+    text-align: center;
+}
+
+.demo-info small {
+    color: #4ECDC4;
+    font-weight: 500;
+}
+
+.demo-info strong {
+    color: #ffffff;
+    font-weight: 700;
+}
+
+/* Enhanced form submit button styling */
+button[kind="formSubmit"] {
+    background: var(--gradient-accent) !important;
+    font-size: 1.2rem !important;
+    font-weight: 700 !important;
+    padding: 1.2rem 3rem !important;
+    letter-spacing: 0.8px !important;
+    border: 2px solid var(--accent-color) !important;
+}
+
+button[kind="formSubmit"]:hover {
+    background: var(--gradient-primary) !important;
+    box-shadow: 0 12px 50px rgba(216, 72, 73, 0.5) !important;
+    transform: translateY(-3px) scale(1.05) !important;
+}
+
+/* Enhanced logout button styling */
+button:has(.stButton):contains("🚪 Logout") {
+    background: linear-gradient(135deg, #e74c3c, #c0392b) !important;
+    border: 2px solid #c0392b !important;
+}
+
+button:has(.stButton):contains("🚪 Logout"):hover {
+    background: linear-gradient(135deg, #c0392b, #a93226) !important;
+    box-shadow: 0 8px 30px rgba(199, 57, 43, 0.4) !important;
+}
+
+/* Enhanced DataFrame styling */
+.stDataFrame {
+    border-radius: 1.5rem !important;
+    overflow: hidden !important;
+    box-shadow: var(--shadow-medium) !important;
+    border: 2px solid var(--border-color) !important;
+}
+
+.stDataFrame table {
+    background: var(--background-card) !important;
+}
+
+.stDataFrame th {
+    background: var(--gradient-primary) !important;
+    color: white !important;
+    font-weight: 600 !important;
+    border: none !important;
+    padding: 1.2rem 1rem !important;
+    font-size: 1rem !important;
+}
+
+.stDataFrame td {
+    border-color: var(--border-color) !important;
+    padding: 1rem !important;
+    transition: all 0.3s ease !important;
+}
+
+.stDataFrame tr:hover td {
+    background: rgba(216, 72, 73, 0.1) !important;
+}
+
+/* Enhanced plotly chart container */
+.js-plotly-plot {
+    border-radius: 1.5rem !important;
+    box-shadow: var(--shadow-medium) !important;
+    border: 2px solid var(--border-color) !important;
+    background: var(--background-card) !important;
+    overflow: hidden;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+    .sidebar-header h1 {
+        font-size: 1.8rem;
+    }
+    
+    .login-header h1 {
+        font-size: 2.5rem;
+    }
+    
+    .plandepa-logo-large {
+        width: 150px;
+    }
+    
+    .plandepa-logo {
+        width: 100px;
+    }
+    
+    .stButton > button {
+        padding: 0.8rem 1.8rem !important;
+        font-size: 0.95rem !important;
+    }
+}
+
+/* Final enhancements */
+.stApp {
+    background-attachment: fixed;
+}
+
+.main {
+    animation: fadeIn 0.6s ease-in;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Enhanced scrollbar styling */
+::-webkit-scrollbar {
+    width: 12px;
+    height: 12px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--background-secondary);
+    border-radius: 15px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--gradient-primary);
+    border-radius: 15px;
+    transition: all 0.3s ease;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--gradient-accent);
+}
